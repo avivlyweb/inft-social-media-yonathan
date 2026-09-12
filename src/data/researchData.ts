@@ -277,5 +277,6 @@ export const authorInfo = {
   course: "Informatietechnologie (INFT)",
   assignment: "Opdracht 4: Website van Onderzoeksposter InDesign",
   academicYear: "2026–2027",
+  email: "yonathanhidrian@gmail.com",
   quote: "Sociale media kan leuk en handig zijn, maar het is belangrijk om een goede balans te vinden. Gebruik het bewust, zodat het jouw leven verrijkt en niet bepaalt.",
 };

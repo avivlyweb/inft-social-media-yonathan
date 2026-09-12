@@ -25,11 +25,11 @@ export function Footer() {
                 {authorInfo.assignment} &bull; {authorInfo.academicYear}
               </div>
               <a
-                href="mailto:avivlyweb@gmail.com"
+                href={`mailto:${authorInfo.email}`}
                 className="inline-flex items-center gap-1.5 text-[11px] text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors pl-1"
               >
                 <Mail className="h-3 w-3" />
-                avivlyweb@gmail.com
+                {authorInfo.email}
               </a>
             </div>
           </div>
