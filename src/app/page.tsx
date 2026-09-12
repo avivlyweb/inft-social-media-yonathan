@@ -19,6 +19,13 @@ import {
 } from "lucide-react";
 import { authorInfo, ageDistributionData } from "@/data/researchData";
 import { FeedbackSection } from "@/components/FeedbackSection";
+import {
+  HeartIcon,
+  PlayPauseIcon,
+  LockUnlockIcon,
+  SuccessIcon,
+  NotificationIcon,
+} from "@/components/AnimatedStateIcons";
 
 export default function HomePage() {
   return (
@@ -100,12 +107,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Card 1: Data & Demografie (Verdiept met harde cijfers & CBS/RIVM context) */}
+            {/* Card 1: Data & Demografie */}
             <div className="rounded-3xl border border-zinc-200/80 bg-white/95 p-7 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/80 shadow-sm hover:border-cyan-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-600 dark:bg-cyan-950/60 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800">
-                    <BarChart3 className="h-6 w-6 group-hover:scale-110 transition-transform" />
+                    <PlayPauseIcon size={26} color="currentColor" duration={2600} />
                   </div>
                   <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-700 dark:bg-cyan-950/80 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
                     7 Categorieën
@@ -147,12 +154,12 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 2: Drijfveren & Psychologie (Verdiept met fomo & motieven) */}
+            {/* Card 2: Drijfveren & Psychologie */}
             <div className="rounded-3xl border border-zinc-200/80 bg-white/95 p-7 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/80 shadow-sm hover:border-indigo-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-                    <Zap className="h-6 w-6 group-hover:scale-110 transition-transform" />
+                    <HeartIcon size={26} color="currentColor" duration={2200} />
                   </div>
                   <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
                     3 Hoofdpijlers
@@ -194,12 +201,12 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 3: Advies & Balans (Met direct bruikbare regels) */}
+            {/* Card 3: Advies & Balans */}
             <div className="rounded-3xl border border-zinc-200/80 bg-white/95 p-7 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/80 shadow-sm hover:border-fuchsia-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-fuchsia-50 text-fuchsia-600 dark:bg-fuchsia-950/60 dark:text-fuchsia-400 border border-fuchsia-200 dark:border-fuchsia-800">
-                    <ShieldAlert className="h-6 w-6 group-hover:scale-110 transition-transform" />
+                    <LockUnlockIcon size={26} color="currentColor" duration={2400} />
                   </div>
                   <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-fuchsia-50 text-fuchsia-700 dark:bg-fuchsia-950/80 dark:text-fuchsia-300 border border-fuchsia-200 dark:border-fuchsia-800">
                     Gezonde Balans

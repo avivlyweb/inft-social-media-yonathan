@@ -35,6 +35,7 @@ import {
   HelpCircle,
   Table as TableIcon,
 } from "lucide-react";
+import { PlayPauseIcon, ToggleIcon } from "@/components/AnimatedStateIcons";
 
 export function ChartsComponent() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -493,11 +494,11 @@ export function ChartsComponent() {
             {/* Quick table toggle */}
             <button
               onClick={() => setShowTableGrafiek3(!showTableGrafiek3)}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-zinc-200 dark:border-zinc-700 text-[11px] font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors no-print"
-              title="Wissel weergave"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-700 text-xs font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors no-print"
+              title="Wissel tussen staafgrafiek en data-tabel"
             >
-              <TableIcon className="h-3 w-3" />
-              {showTableGrafiek3 ? "Grafiek" : "Tabel"}
+              <ToggleIcon size={24} active={showTableGrafiek3} color="#D946EF" />
+              <span>{showTableGrafiek3 ? "Tabel Weergave" : "Grafiek Weergave"}</span>
             </button>
           </div>
 

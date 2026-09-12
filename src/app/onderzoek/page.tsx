@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { prosAndCons, motivationData } from "@/data/researchData";
 import {
-  CheckCircle2,
-  XCircle,
   HelpCircle,
   Users,
   Compass,
@@ -11,6 +9,7 @@ import {
   TrendingUp,
   Sparkles,
 } from "lucide-react";
+import { SuccessIcon, EyeToggleIcon, HeartIcon } from "@/components/AnimatedStateIcons";
 
 export default function OnderzoekPage() {
   return (
@@ -95,8 +94,8 @@ export default function OnderzoekPage() {
           {/* Voordelen Column */}
           <div className="rounded-3xl border border-emerald-200/80 bg-emerald-50/20 dark:border-emerald-900/60 dark:bg-emerald-950/20 p-6 sm:p-8 space-y-6">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-md shadow-emerald-500/20">
-                <CheckCircle2 className="h-5 w-5" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-500 text-white shadow-md shadow-emerald-500/20">
+                <SuccessIcon size={24} active={true} color="#FFFFFF" />
               </div>
               <div>
                 <h3 className="font-heading text-xl font-bold text-zinc-900 dark:text-white">
@@ -131,8 +130,8 @@ export default function OnderzoekPage() {
           {/* Nadelen Column */}
           <div className="rounded-3xl border border-rose-200/80 bg-rose-50/20 dark:border-rose-900/60 dark:bg-rose-950/20 p-6 sm:p-8 space-y-6">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-500 text-white shadow-md shadow-rose-500/20">
-                <XCircle className="h-5 w-5" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-500 text-white shadow-md shadow-rose-500/20">
+                <EyeToggleIcon size={24} active={true} color="#FFFFFF" />
               </div>
               <div>
                 <h3 className="font-heading text-xl font-bold text-zinc-900 dark:text-white">
