@@ -15,6 +15,7 @@ import {
   Calculator,
   Flame,
 } from "lucide-react";
+import { JapandiLogo } from "@/components/JapandiLogo";
 
 const navItems = [
   {
@@ -47,11 +48,13 @@ const navItems = [
 export function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  // Close mobile menu on route change without effect setState cascade
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setMobileMenuOpen(false);
-  }, [pathname]);
+  }
 
   // Lock body scroll only on small screens when open
   useEffect(() => {
@@ -70,13 +73,11 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/90 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/90 transition-colors">
+      <header className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/90 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/90 transition-colors print:hidden">
         <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand */}
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
-            <div className="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-fuchsia-600 text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200">
-              <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 animate-pulse" />
-            </div>
+            <JapandiLogo className="h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0" />
             <div>
               <div className="flex items-center gap-1.5 sm:gap-2">
                 <span className="font-heading font-extrabold tracking-tight text-zinc-950 dark:text-white text-base sm:text-lg">
@@ -148,10 +149,8 @@ export function Navbar() {
         <div className="fixed inset-0 z-[100] flex flex-col bg-white dark:bg-zinc-950 md:hidden animate-in fade-in duration-200">
           {/* Mobile Drawer Top Header Bar */}
           <div className="flex h-16 items-center justify-between px-4 sm:px-6 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-tr from-cyan-500 via-indigo-600 to-fuchsia-600 flex items-center justify-center text-white font-bold text-xs">
-                YH
-              </div>
+            <div className="flex items-center gap-2.5">
+              <JapandiLogo className="h-8 w-8 flex-shrink-0" size={32} />
               <span className="font-heading font-extrabold text-sm text-zinc-950 dark:text-white">
                 SocialMedia<span className="text-indigo-600">.INFT</span>
               </span>

@@ -22,6 +22,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Social Media Onderzoek | Yonathan Hidrian (4m3) INFT",
   description: "Onderzoek naar het gebruik, de motieven en impact van sociale media. Uitgewerkt door Yonathan Hidrian voor INFT Opdracht 4.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -1,18 +1,17 @@
 import Link from "next/link";
 import { authorInfo } from "@/data/researchData";
-import { Sparkles, ArrowUpRight, GraduationCap } from "lucide-react";
+import { GraduationCap, Mail } from "lucide-react";
+import { JapandiLogo } from "@/components/JapandiLogo";
 
 export function Footer() {
   return (
-    <footer className="w-full border-t border-zinc-200/80 bg-zinc-50/50 py-12 dark:border-zinc-800 dark:bg-zinc-950 mt-auto">
+    <footer className="w-full border-t border-zinc-200/80 bg-zinc-50/50 py-12 dark:border-zinc-800 dark:bg-zinc-950 mt-auto print:hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {/* Col 1 */}
           <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <div className="h-7 w-7 rounded-lg bg-gradient-to-tr from-cyan-500 via-indigo-500 to-fuchsia-500 flex items-center justify-center text-white">
-                <Sparkles className="h-4 w-4" />
-              </div>
+            <div className="flex items-center gap-2.5">
+              <JapandiLogo className="h-7 w-7 flex-shrink-0" size={28} />
               <span className="font-heading font-bold text-zinc-900 dark:text-white">
                 SocialMedia<span className="text-indigo-600 dark:text-indigo-400">.INFT</span>
               </span>
@@ -20,9 +19,18 @@ export function Footer() {
             <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
               Onderzoek naar het gebruik van sociale media, leeftijdsverdeling en de balans tussen voor- en nadelen.
             </p>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[11px] font-medium text-zinc-700 dark:text-zinc-300">
-              <GraduationCap className="h-3.5 w-3.5 text-indigo-500" />
-              {authorInfo.assignment} &bull; {authorInfo.academicYear}
+            <div className="flex flex-col gap-1.5 pt-1">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-[11px] font-medium text-zinc-700 dark:text-zinc-300 w-fit">
+                <GraduationCap className="h-3.5 w-3.5 text-indigo-500" />
+                {authorInfo.assignment} &bull; {authorInfo.academicYear}
+              </div>
+              <a
+                href="mailto:avivlyweb@gmail.com"
+                className="inline-flex items-center gap-1.5 text-[11px] text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors pl-1"
+              >
+                <Mail className="h-3 w-3" />
+                avivlyweb@gmail.com
+              </a>
             </div>
           </div>
 
