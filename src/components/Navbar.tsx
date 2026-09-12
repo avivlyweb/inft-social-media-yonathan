@@ -74,21 +74,21 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/90 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-950/90 transition-colors print:hidden">
+      <header className="sticky top-0 z-40 w-full border-b border-[#E3DDD1] bg-[#FAF8F5]/90 backdrop-blur-md transition-colors print:hidden">
         <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Brand */}
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
             <JapandiLogo className="h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0" />
             <div>
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className="font-heading font-extrabold tracking-tight text-zinc-950 dark:text-white text-base sm:text-lg">
-                  SocialMedia<span className="text-indigo-600 dark:text-indigo-400">.INFT</span>
+                <span className="font-heading font-extrabold tracking-tight text-[#1F1D1A] text-base sm:text-lg">
+                  SocialMedia<span className="text-[#5C6E58]">.INFT</span>
                 </span>
-                <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-bold text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                <span className="inline-flex items-center rounded-full bg-[#F4EFE6] px-2 py-0.5 text-[10px] font-mono font-bold text-[#5A544A] border border-[#E3DDD1]">
                   4m3
                 </span>
               </div>
-              <p className="text-[10px] sm:text-[11px] text-zinc-500 dark:text-zinc-400 hidden xs:block font-medium">
+              <p className="text-[10px] sm:text-[11px] text-[#7A7366] hidden xs:block font-medium">
                 Yonathan Hidrian
               </p>
             </div>
@@ -103,19 +103,19 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative flex items-center gap-2 px-3.5 py-2 text-xs lg:text-sm font-semibold rounded-xl transition-all duration-200 ${
+                  className={`relative flex items-center gap-2 px-3.5 py-2 text-xs lg:text-sm font-medium rounded-xl transition-all duration-200 ${
                     isActive
-                      ? "bg-zinc-900 text-white shadow-sm dark:bg-white dark:text-zinc-900"
-                      : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:text-white dark:hover:bg-zinc-900"
+                      ? "bg-[#24211D] text-[#FAF8F5] shadow-xs"
+                      : "text-[#5A544A] hover:text-[#1F1D1A] hover:bg-[#F0EBE1]"
                   }`}
                 >
-                  <Icon className={`h-4 w-4 ${isActive ? "text-cyan-400 dark:text-indigo-600" : ""}`} />
+                  <Icon className={`h-4 w-4 ${isActive ? "text-[#D8CFBC]" : "text-[#7A7366]"}`} />
                   <span>{item.name}</span>
                   {item.badge && (
-                    <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                    <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-mono font-bold uppercase tracking-wider ${
                       isActive
-                        ? "bg-cyan-400/20 text-cyan-300"
-                        : "bg-indigo-50 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800"
+                        ? "bg-[#38332C] text-[#EBE6DC]"
+                        : "bg-[#F4EFE6] text-[#5A544A] border border-[#E3DDD1]"
                     }`}>
                       {item.badge}
                     </span>
@@ -126,10 +126,10 @@ export function Navbar() {
 
             <Link
               href="/conclusie#quiz"
-              className="ml-2 flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-fuchsia-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:opacity-95 transition-opacity"
+              className="ml-2 flex items-center gap-1.5 rounded-xl bg-[#C26747] hover:bg-[#A85538] px-4 py-2 text-xs font-bold text-white shadow-xs transition-colors"
             >
-              <Calculator className="h-3.5 w-3.5" />
-              <span>Balans Test</span>
+              <Flame className="h-3.5 w-3.5 text-[#FCEEEA]" />
+              <span>Balanstest</span>
             </Link>
           </nav>
 

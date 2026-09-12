@@ -26,127 +26,133 @@ import {
   SuccessIcon,
   NotificationIcon,
 } from "@/components/AnimatedStateIcons";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 
 export default function HomePage() {
   return (
     <div className="relative overflow-hidden">
-      {/* 21st.dev Style Mesh Gradient Background */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] overflow-hidden -z-10">
-        <div className="absolute -top-[160px] left-1/4 w-[540px] h-[480px] bg-gradient-to-br from-cyan-400/25 via-indigo-500/25 to-fuchsia-500/20 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute top-[120px] right-1/4 w-[420px] h-[370px] bg-gradient-to-tr from-blue-400/20 to-purple-500/20 rounded-full blur-[90px]" />
+      {/* Japandi Organic Warm Canvas Glow */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[520px] overflow-hidden -z-10">
+        <div className="absolute -top-[120px] left-1/3 w-[500px] h-[400px] bg-gradient-to-br from-[#EAE4D7]/70 via-[#E4DCD0]/40 to-transparent rounded-full blur-[100px]" />
+        <div className="absolute top-[80px] right-1/4 w-[380px] h-[320px] bg-gradient-to-tr from-[#D8CFBC]/40 to-transparent rounded-full blur-[90px]" />
       </div>
 
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-20 sm:pb-24">
-        <div className="flex flex-col items-center text-center space-y-6 max-w-3xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200/80 bg-indigo-50/80 px-4 py-1.5 text-xs font-semibold text-indigo-700 dark:border-indigo-900 dark:bg-indigo-950/60 dark:text-indigo-300 shadow-sm">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>INFT Eindopdracht 4 &bull; InDesign Poster naar Webapplicatie</span>
+      {/* Editorial Monograph Hero Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-16 sm:pt-24 sm:pb-24">
+        <div className="flex flex-col items-center text-center space-y-7 max-w-3xl mx-auto">
+          {/* Editorial Monograph Label */}
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-[#D9D2C3] bg-[#F4EFE6]/80 px-4 py-1.5 text-xs font-semibold text-[#2D2A26] shadow-xs tracking-wide">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#5C6E58] animate-pulse" />
+            <span className="font-mono text-[11px] uppercase tracking-wider text-[#6B6357]">Dossier 04</span>
+            <span className="text-[#A39B8B]">&bull;</span>
+            <span>INFT Onderzoeksposter naar Digitale Uitgave</span>
           </div>
 
-          {/* Heading */}
-          <h1 className="font-heading text-4xl sm:text-6xl font-extrabold tracking-tight text-zinc-950 dark:text-white leading-[1.1]">
+          {/* Heading with dramatic editorial contrast */}
+          <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[#1F1D1A] leading-[1.08]">
             Maakt gebruik van{" "}
-            <span className="bg-gradient-to-r from-cyan-500 via-indigo-600 to-fuchsia-600 bg-clip-text text-transparent">
+            <span className="italic font-serif font-normal text-[#2D2A26] block sm:inline decoration-1 underline underline-offset-8 decoration-[#D5CEBF]">
               Sociale Media
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-[#5A544A] leading-relaxed font-normal max-w-2xl">
             Een diepgaand digitaal onderzoek naar hoe mensen tussen de 12 en 75+ jaar sociale netwerken benutten,
             waarom we online zijn, en hoe we een gezonde balans bewaren tussen schermtijd, slaap en het echte leven.
           </p>
 
-          {/* Meta Tag pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs text-zinc-500">
-            <span className="flex items-center gap-1.5 bg-white dark:bg-zinc-900 px-3.5 py-1.5 rounded-xl border border-zinc-200/80 dark:border-zinc-800 shadow-xs">
-              <Users className="h-3.5 w-3.5 text-cyan-500" /> Onderzoeker: {authorInfo.name} ({authorInfo.class})
+          {/* Meta Tag pills in refined tactile stone style */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs text-[#5A544A]">
+            <span className="flex items-center gap-2 bg-[#FFFFFF]/90 backdrop-blur-xs px-4 py-2 rounded-xl border border-[#E3DDD1] shadow-xs font-medium">
+              <Users className="h-3.5 w-3.5 text-[#5C6E58]" /> Onderzoeker: <strong className="text-[#1F1D1A]">{authorInfo.name}</strong> ({authorInfo.class})
             </span>
-            <span className="flex items-center gap-1.5 bg-white dark:bg-zinc-900 px-3.5 py-1.5 rounded-xl border border-zinc-200/80 dark:border-zinc-800 shadow-xs">
-              <Sparkles className="h-3.5 w-3.5 text-indigo-500" /> Vak: {authorInfo.course}
+            <span className="flex items-center gap-2 bg-[#FFFFFF]/90 backdrop-blur-xs px-4 py-2 rounded-xl border border-[#E3DDD1] shadow-xs font-medium">
+              <Sparkles className="h-3.5 w-3.5 text-[#8C6D4F]" /> Vak: <strong className="text-[#1F1D1A]">{authorInfo.course}</strong>
             </span>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 pt-3 w-full sm:w-auto">
+          {/* CTA Buttons in understated luxury styling */}
+          <div className="flex flex-col sm:flex-row items-center gap-3.5 pt-4 w-full sm:w-auto">
             <Link
               href="/grafieken"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-zinc-950 px-6 py-3.5 text-sm font-bold text-white hover:bg-zinc-800 shadow-lg hover:shadow-indigo-500/10 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100 transition-all"
+              className="w-full sm:w-auto flex items-center justify-center gap-2.5 rounded-xl bg-[#24211D] px-7 py-3.5 text-sm font-bold text-[#FAF8F5] hover:bg-[#38332C] shadow-md hover:shadow-xl transition-all"
             >
-              <BarChart3 className="h-4 w-4 text-cyan-400" />
+              <BarChart3 className="h-4 w-4 text-[#D8CFBC]" />
               Bekijk alle 3 Grafieken
-              <ArrowRight className="h-4 w-4 ml-1" />
+              <ArrowRight className="h-4 w-4 ml-1 opacity-70" />
             </Link>
 
             <Link
               href="/conclusie#quiz"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-fuchsia-600 px-6 py-3.5 text-sm font-bold text-white shadow-md hover:opacity-95 transition-all"
+              className="w-full sm:w-auto flex items-center justify-center gap-2.5 rounded-xl border border-[#D5CEBF] bg-[#FFFFFF] px-7 py-3.5 text-sm font-bold text-[#24211D] shadow-xs hover:bg-[#F7F4EE] hover:border-[#BDB4A1] transition-all"
             >
-              <Flame className="h-4 w-4" />
+              <Flame className="h-4 w-4 text-[#C26747]" />
               Doe de Balanstest
             </Link>
           </div>
         </div>
 
-        {/* 21st.dev Style In-Depth Value Bento Grid */}
-        <div className="mt-16 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-zinc-200/80 dark:border-zinc-800 pb-4">
+        {/* Japandi Editorial Monograph Bento Grid */}
+        <div className="mt-20 space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[#E3DDD1] pb-5">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                Onderzoeksarchitectuur
+              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#5C6E58]">
+                Architectuur & Synthese
               </span>
-              <h2 className="font-heading text-2xl font-bold text-zinc-950 dark:text-white">
+              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#1F1D1A] tracking-tight mt-1">
                 De Drie Pijlers uit Yonathan&apos;s Onderzoek
               </h2>
             </div>
-            <p className="text-xs text-zinc-500">
-              Verdiepte inzichten & interactieve meerwaarde
+            <p className="text-xs text-[#7A7366] font-mono">
+              [ INFT DOSSIER &bull; DATA &bull; PSYCHOLOGIE &bull; BALANS ]
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Card 1: Data & Demografie */}
-            <div className="rounded-3xl border border-zinc-200/80 bg-white/95 p-7 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/80 shadow-sm hover:border-cyan-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-              <div className="space-y-4">
+            <div className="rounded-3xl border border-[#E3DDD1] bg-[#FFFFFF]/90 backdrop-blur-xs p-7 sm:p-8 shadow-xs hover:border-[#5C6E58]/60 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+              <div className="space-y-5">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-600 dark:bg-cyan-950/60 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800">
-                    <PlayPauseIcon size={26} color="currentColor" duration={2600} />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4EFE6] text-[#2D2A26] border border-[#E3DDD1]">
+                    <PlayPauseIcon size={24} color="currentColor" duration={2600} />
                   </div>
-                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-700 dark:bg-cyan-950/80 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
-                    7 Categorieën
+                  <span className="text-[10px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-[#F4EFE6] text-[#5A544A] border border-[#E3DDD1]">
+                    7 Cohorten
                   </span>
                 </div>
 
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
-                    Data & Demografie
-                  </span>
-                  <h3 className="font-heading text-xl font-bold text-zinc-900 dark:text-white mt-1">
-                    Wat zien we in de cijfers?
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl sm:text-4xl font-heading font-bold text-[#1F1D1A]">
+                      <AnimatedNumber value={36} suffix="%" />
+                    </span>
+                    <span className="text-xs font-mono uppercase text-[#7A7366]">12–35 Jaar Piek</span>
+                  </div>
+                  <h3 className="font-heading text-xl font-bold text-[#1F1D1A] mt-2">
+                    Wat tonen de cijfers?
                   </h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                  De grafiek toont hoe mensen tussen de 12 en 75+ jaar sociale netwerken benutten. Waar jongeren (12–35 jaar) de grootste groep vormen (36% gecombineerd), blijft ook de actieve participatie bij 45-plussers gestaag stijgen.
+                <p className="text-xs sm:text-sm text-[#5A544A] leading-relaxed">
+                  De grafiek toont hoe Nederlanders van 12 tot 75+ sociale netwerken benutten. Waar jongeren de piek vormen, groeit de actieve participatie bij 45-plussers gestaag.
                 </p>
 
                 {/* Concrete Research Value Box */}
-                <div className="rounded-2xl bg-zinc-50 dark:bg-zinc-800/50 p-4 border border-zinc-100 dark:border-zinc-800 space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-1.5">
-                    <Eye className="h-3 w-3 text-cyan-500" /> Kernbevinding uit de data:
+                <div className="rounded-2xl bg-[#FAF8F5] p-4 border border-[#EBE6DC] space-y-2">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7A7366] flex items-center gap-1.5">
+                    <Eye className="h-3 w-3 text-[#5C6E58]" /> Kernbevinding:
                   </span>
-                  <p className="text-xs text-zinc-700 dark:text-zinc-300 font-medium">
-                    Jongeren (12-25) zijn piekgebruikers op visuele platformen (TikTok/Snapchat), terwijl 65+ (17% samen) hoofdzakelijk WhatsApp en Facebook inzet voor gerichte familie-updates.
+                  <p className="text-xs text-[#2D2A26] leading-relaxed">
+                    Jongeren (12–25) domineren op visuele feeds (TikTok, Snapchat), terwijl 65+ (17% samen) hoofdzakelijk WhatsApp en Facebook kiest voor hechte familiecontacten.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+              <div className="mt-7 pt-4 border-t border-[#EBE6DC] flex items-center justify-between">
                 <Link
                   href="/grafieken"
-                  className="text-xs font-bold text-cyan-600 dark:text-cyan-400 flex items-center gap-1.5 hover:underline"
+                  className="text-xs font-bold text-[#1F1D1A] flex items-center gap-2 group-hover:text-[#5C6E58] transition-colors"
                 >
                   Bekijk interactieve donut grafiek
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
@@ -155,94 +161,100 @@ export default function HomePage() {
             </div>
 
             {/* Card 2: Drijfveren & Psychologie */}
-            <div className="rounded-3xl border border-zinc-200/80 bg-white/95 p-7 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/80 shadow-sm hover:border-indigo-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-              <div className="space-y-4">
+            <div className="rounded-3xl border border-[#E3DDD1] bg-[#FFFFFF]/90 backdrop-blur-xs p-7 sm:p-8 shadow-xs hover:border-[#8C6D4F]/60 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+              <div className="space-y-5">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800">
-                    <HeartIcon size={26} color="currentColor" duration={2200} />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4EFE6] text-[#2D2A26] border border-[#E3DDD1]">
+                    <HeartIcon size={24} color="currentColor" duration={2200} />
                   </div>
-                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                    3 Hoofdpijlers
+                  <span className="text-[10px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-[#F4EFE6] text-[#5A544A] border border-[#E3DDD1]">
+                    3 Motieven
                   </span>
                 </div>
 
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
-                    Drijfveren
-                  </span>
-                  <h3 className="font-heading text-xl font-bold text-zinc-900 dark:text-white mt-1">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl sm:text-4xl font-heading font-bold text-[#1F1D1A]">
+                      <AnimatedNumber value={84} suffix="%" />
+                    </span>
+                    <span className="text-xs font-mono uppercase text-[#7A7366]">Sociale Connectie</span>
+                  </div>
+                  <h3 className="font-heading text-xl font-bold text-[#1F1D1A] mt-2">
                     Waarom zijn we online?
                   </h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                  De 3 hoofdredenen die uit het onderzoek naar voren komen: direct contact met vrienden en familie (84%), actueel nieuws en razendsnelle informatie (62%), plus ontspanning en vermaak (76%).
+                <p className="text-xs sm:text-sm text-[#5A544A] leading-relaxed">
+                  De 3 hoofdredenen: direct contact met vrienden & familie (84%), actueel nieuws (62%), en ontspanning (76%).
                 </p>
 
                 {/* Concrete Research Value Box */}
-                <div className="rounded-2xl bg-zinc-50 dark:bg-zinc-800/50 p-4 border border-zinc-100 dark:border-zinc-800 space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-1.5">
-                    <BrainCircuit className="h-3 w-3 text-indigo-500" /> De Psychologische Trigger:
+                <div className="rounded-2xl bg-[#FAF8F5] p-4 border border-[#EBE6DC] space-y-2">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7A7366] flex items-center gap-1.5">
+                    <BrainCircuit className="h-3 w-3 text-[#8C6D4F]" /> Psychologische trigger:
                   </span>
-                  <p className="text-xs text-zinc-700 dark:text-zinc-300 font-medium">
-                    Algoritmen belonen nieuwsgierigheid met korte dopamine-hits. Hierdoor verschuift &apos;even 5 minuten ontspanning&apos; ongemerkt naar een uur scrollen zonder bewuste intentie.
+                  <p className="text-xs text-[#2D2A26] leading-relaxed">
+                    Variabele beloningen triggeren dopamine: &apos;even 5 minuten ontspanning&apos; glijdt door infinite scroll makkelijk door naar een uur onbewust consumeren.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+              <div className="mt-7 pt-4 border-t border-[#EBE6DC] flex items-center justify-between">
                 <Link
                   href="/onderzoek"
-                  className="text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5 hover:underline"
+                  className="text-xs font-bold text-[#1F1D1A] flex items-center gap-2 group-hover:text-[#8C6D4F] transition-colors"
                 >
-                  Lees het volledige achtergrondartikel
+                  Lees het volledige artikel
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
 
             {/* Card 3: Advies & Balans */}
-            <div className="rounded-3xl border border-zinc-200/80 bg-white/95 p-7 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/80 shadow-sm hover:border-fuchsia-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-              <div className="space-y-4">
+            <div className="rounded-3xl border border-[#E3DDD1] bg-[#FFFFFF]/90 backdrop-blur-xs p-7 sm:p-8 shadow-xs hover:border-[#C26747]/60 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+              <div className="space-y-5">
                 <div className="flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-fuchsia-50 text-fuchsia-600 dark:bg-fuchsia-950/60 dark:text-fuchsia-400 border border-fuchsia-200 dark:border-fuchsia-800">
-                    <LockUnlockIcon size={26} color="currentColor" duration={2400} />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F4EFE6] text-[#2D2A26] border border-[#E3DDD1]">
+                    <LockUnlockIcon size={24} color="currentColor" duration={2400} />
                   </div>
-                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-fuchsia-50 text-fuchsia-700 dark:bg-fuchsia-950/80 dark:text-fuchsia-300 border border-fuchsia-200 dark:border-fuchsia-800">
+                  <span className="text-[10px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-[#F4EFE6] text-[#5A544A] border border-[#E3DDD1]">
                     Gezonde Balans
                   </span>
                 </div>
 
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-fuchsia-600 dark:text-fuchsia-400">
-                    Advies & Conclusie
-                  </span>
-                  <h3 className="font-heading text-xl font-bold text-zinc-900 dark:text-white mt-1">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl sm:text-4xl font-heading font-bold text-[#1F1D1A]">
+                      <AnimatedNumber value={365} suffix="u" />
+                    </span>
+                    <span className="text-xs font-mono uppercase text-[#7A7366]">Tijdswinst / Jaar</span>
+                  </div>
+                  <h3 className="font-heading text-xl font-bold text-[#1F1D1A] mt-2">
                     Gezonde Balans Vinden
                   </h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                  Sociale media verrijkt wanneer je het doelbewust gebruikt, maar vergt discipline om slaap, concentratie en offline vriendschappen te beschermen.
+                <p className="text-xs sm:text-sm text-[#5A544A] leading-relaxed">
+                  Sociale media verrijkt wanneer je doelbewust kiest, maar vergt bewuste grenzen om slaapkwaliteit, offline vriendschappen en rust te waarborgen.
                 </p>
 
                 {/* Concrete Research Value Box */}
-                <div className="rounded-2xl bg-zinc-50 dark:bg-zinc-800/50 p-4 border border-zinc-100 dark:border-zinc-800 space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-1.5">
-                    <Lightbulb className="h-3 w-3 text-fuchsia-500" /> Gouden 20-20-Bed Regel:
+                <div className="rounded-2xl bg-[#FAF8F5] p-4 border border-[#EBE6DC] space-y-2">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7A7366] flex items-center gap-1.5">
+                    <Lightbulb className="h-3 w-3 text-[#C26747]" /> Gouden 20-20-Bed Regel:
                   </span>
-                  <p className="text-xs text-zinc-700 dark:text-zinc-300 font-medium">
-                    Schakel blauwlichtfilters in na 20:00 uur en leg apparaten 45 minuten voor het slapen buiten handbereik voor 30% snellere inslaaptijd.
+                  <p className="text-xs text-[#2D2A26] leading-relaxed">
+                    Schakel blauwlichtfilters in na 20:00 uur en leg je telefoon 45 minuten voor het slapengaan buiten handbereik voor diepere nachtrust.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between">
+              <div className="mt-7 pt-4 border-t border-[#EBE6DC] flex items-center justify-between">
                 <Link
                   href="/conclusie"
-                  className="text-xs font-bold text-fuchsia-600 dark:text-fuchsia-400 flex items-center gap-1.5 hover:underline"
+                  className="text-xs font-bold text-[#1F1D1A] flex items-center gap-2 group-hover:text-[#C26747] transition-colors"
                 >
-                  Lees Yonathan&apos;s Conclusie & Tips
+                  Bekijk Yonathan&apos;s Conclusie & Balanstest
                   <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>

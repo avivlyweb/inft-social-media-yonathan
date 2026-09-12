@@ -2,29 +2,39 @@
 
 @layer base {
   :root {
-    --background: #f8fafc;
-    --foreground: #0f172a;
-    --primary: #4f46e5;
+    --background: #faf8f5;
+    --foreground: #1c1d1f;
+    --primary: #2d312e;
+    --paper-tint: #f4f0e8;
+    --stone-border: #e6e2d8;
+    --matcha-accent: #4a5d4e;
+    --terracotta-accent: #c26747;
   }
 
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    background-image: radial-gradient(#e5e0d4 0.75px, transparent 0.75px);
+    background-size: 24px 24px;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-syne), var(--font-inter), sans-serif;
+    letter-spacing: -0.025em;
   }
 }
 
-.bg-radial-gradient {
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+.japandi-card {
+  background: #ffffff;
+  border: 1px solid var(--stone-border);
+  box-shadow: 0 4px 20px -2px rgba(28, 29, 31, 0.04);
 }
 
-.mesh-glow {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(99, 102, 241, 0.2) 50%, rgba(217, 70, 239, 0.2) 100%);
-  filter: blur(80px);
+.japandi-pill {
+  background: var(--paper-tint);
+  border: 1px solid var(--stone-border);
+  color: #2d312e;
 }
 
 .print-only {
