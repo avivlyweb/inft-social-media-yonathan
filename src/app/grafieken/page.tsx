@@ -1,4 +1,5 @@
 import { ChartsComponent } from "@/components/ChartsComponent";
+import { LivePollSection } from "@/components/LivePollSection";
 import { PrintReportButton } from "@/components/PrintReportButton";
 import { authorInfo } from "@/data/researchData";
 import { Database, Layers, ArrowRight } from "lucide-react";
@@ -130,6 +131,13 @@ export default function GrafiekenPage() {
       {/* Chart System Component (Responsive Recharts + Cohort Drill-Down) */}
       {/* ========================================================================= */}
       <ChartsComponent />
+
+      {/* ========================================================================= */}
+      {/* Live Peiling Module (Powered by Convex Real-Time Synchronization) */}
+      {/* ========================================================================= */}
+      <div className="no-print">
+        <LivePollSection />
+      </div>
 
       {/* ========================================================================= */}
       {/* Methodologische Verantwoording & Link naar Conclusie */}

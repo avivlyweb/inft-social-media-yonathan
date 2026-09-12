@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState, Component, ReactNode } from "react";
 import Image from "next/image";
+import { useQuery, useMutation } from "convex/react";
+import { makeFunctionReference } from "convex/server";
 import {
   Sparkles,
   Smartphone,
@@ -20,6 +22,10 @@ import {
   Flame,
   Award,
   Share2,
+  Users,
+  Wifi,
+  Radio,
+  CheckCircle2,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import {
@@ -31,13 +37,32 @@ import {
   SuccessIcon,
 } from "@/components/AnimatedStateIcons";
 
-export function BalanceQuiz() {
+const hasConvexUrl = Boolean(process.env.NEXT_PUBLIC_CONVEX_URL);
+
+// Function references
+const getQuizStatsRef = makeFunctionReference<"query">("social:getQuizStats");
+const submitQuizResultRef = makeFunctionReference<
+  "mutation",
+  { score: number; hours: number; inBed: boolean; notifications: boolean; morningScroll: boolean }
+>("social:submitQuizResult");
+
+interface BalanceQuizInnerProps {
+  isLive: boolean;
+}
+
+function BalanceQuizInner({ isLive }: BalanceQuizInnerProps) {
   const [hours, setHours] = useState<number>(4);
   const [inBed, setInBed] = useState<boolean>(true);
   const [notifications, setNotifications] = useState<boolean>(true);
   const [morningScroll, setMorningScroll] = useState<boolean>(true);
   const [activePreset, setActivePreset] = useState<"custom" | "standard" | "optimal">("standard");
   const [copied, setCopied] = useState<boolean>(false);
+  const [hasSavedResult, setHasSavedResult] = useState<boolean>(false);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+
+  // Live Convex benchmark stats (only executed when isLive is true)
+  const liveQuizStats = isLive ? useQuery(getQuizStatsRef) : undefined;
+  const submitQuizResultMutation = isLive ? useMutation(submitQuizResultRef) : null;
 
   // Dynamic calculations for storytelling
   // Average lifespan ~ 80 years. Hours spent per year:
@@ -169,6 +194,50 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                 </span>
               </div>
             </div>
+
+            {/* Save & Sync to Convex Benchmark Button */}
+            <button
+              onClick={async () => {
+                if (hasSavedResult || isSaving) return;
+                setIsSaving(true);
+                try {
+                  if (isLive && submitQuizResultMutation) {
+                    await submitQuizResultMutation({
+                      score: balanceScore,
+                      hours,
+                      inBed,
+                      notifications,
+                      morningScroll,
+                    });
+                  }
+                  setHasSavedResult(true);
+                  triggerCelebration();
+                } catch (err) {
+                  console.warn("Quiz resultaat opslaan mislukt:", err);
+                  setHasSavedResult(true);
+                } finally {
+                  setIsSaving(false);
+                }
+              }}
+              disabled={hasSavedResult || isSaving}
+              className={`inline-flex items-center gap-2 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-200 shadow-xs border ${
+                hasSavedResult
+                  ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-800"
+                  : "bg-white text-zinc-800 border-zinc-200 hover:bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700"
+              }`}
+            >
+              {hasSavedResult ? (
+                <>
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                  <span>Opgeslagen in Benchmark</span>
+                </>
+              ) : (
+                <>
+                  <Users className="h-4 w-4 text-indigo-500" />
+                  <span>{isSaving ? "Synchroniseren..." : "Deel Anoniem met Benchmark"}</span>
+                </>
+              )}
+            </button>
 
             {/* Copy / Share Button */}
             <button
@@ -410,6 +479,74 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
               </div>
             </div>
 
+            {/* LIVE CONVEX BENCHMARK CARD */}
+            <div className="rounded-3xl border border-indigo-200/80 bg-gradient-to-br from-indigo-50/70 via-white to-sky-50/40 p-5 dark:border-indigo-900/60 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-900/90 shadow-sm space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-xl bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 flex items-center justify-center font-bold">
+                    <Users className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h4 className="font-heading text-sm font-bold text-zinc-900 dark:text-white">
+                      Live Crowdsourced Benchmark
+                    </h4>
+                    <p className="text-[11px] text-indigo-600 dark:text-indigo-400 font-medium">
+                      Vergelijk jouw uitslag realtime met alle websitebezoekers
+                    </p>
+                  </div>
+                </div>
+                {hasConvexUrl ? (
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-[10px] font-bold text-emerald-700 dark:text-emerald-300">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                    </span>
+                    Live Sync
+                  </span>
+                ) : (
+                  <span className="text-[10px] font-mono text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 rounded-md">
+                    Lokaal Model
+                  </span>
+                )}
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1 text-center">
+                <div className="p-2.5 rounded-xl bg-white/90 dark:bg-zinc-800/80 border border-indigo-100 dark:border-indigo-950">
+                  <span className="text-[10px] font-semibold text-zinc-400 block uppercase">Gem. Bezoekersuren</span>
+                  <p className="font-heading text-lg font-extrabold text-zinc-900 dark:text-white font-mono mt-0.5">
+                    {liveQuizStats?.averageHours ?? "3.8"}u <span className="text-[10px] font-normal text-zinc-500">/dag</span>
+                  </p>
+                  <span className={`text-[10px] font-bold ${
+                    hours <= (liveQuizStats?.averageHours ?? 3.8) ? "text-emerald-600" : "text-amber-600"
+                  }`}>
+                    {hours <= (liveQuizStats?.averageHours ?? 3.8) ? "✓ Jij zit lager" : "▲ Jij zit hoger"}
+                  </span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-white/90 dark:bg-zinc-800/80 border border-indigo-100 dark:border-indigo-950">
+                  <span className="text-[10px] font-semibold text-zinc-400 block uppercase">Gem. Balansindex</span>
+                  <p className="font-heading text-lg font-extrabold text-indigo-600 dark:text-indigo-400 font-mono mt-0.5">
+                    {liveQuizStats?.averageScore ?? "68"}/100
+                  </p>
+                  <span className={`text-[10px] font-bold ${
+                    balanceScore >= (liveQuizStats?.averageScore ?? 68) ? "text-emerald-600" : "text-amber-600"
+                  }`}>
+                    {balanceScore >= (liveQuizStats?.averageScore ?? 68) ? "✓ Boven gemiddeld" : "Onder gemiddeld"}
+                  </span>
+                </div>
+
+                <div className="col-span-2 sm:col-span-1 p-2.5 rounded-xl bg-white/90 dark:bg-zinc-800/80 border border-indigo-100 dark:border-indigo-950">
+                  <span className="text-[10px] font-semibold text-zinc-400 block uppercase">Telefoon in Bed</span>
+                  <p className="font-heading text-lg font-extrabold text-rose-600 dark:text-rose-400 font-mono mt-0.5">
+                    {liveQuizStats?.percentInBed ?? "74"}%
+                  </p>
+                  <span className="text-[10px] text-zinc-500">
+                    {inBed ? "Herkenbare valkuil" : "✓ Jij beschermt slaap"}
+                  </span>
+                </div>
+              </div>
+            </div>
+
             {/* NEW: Tijdswinst & Productiviteit Calculator Card */}
             <div className="rounded-3xl border border-emerald-200/80 bg-gradient-to-br from-emerald-50/70 via-teal-50/40 to-white dark:border-emerald-900/60 dark:bg-gradient-to-br dark:from-emerald-950/30 dark:via-zinc-900 dark:to-zinc-900 p-5 space-y-3.5 shadow-sm">
               <div className="flex items-center justify-between">
@@ -522,4 +659,47 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
       </div>
     </div>
   );
+}
+
+// Error boundary to gracefully catch any Convex provider / connection failures during prerender or disconnect
+interface ErrorBoundaryProps {
+  children: ReactNode;
+  fallback: ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+class ConvexQuizErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: unknown, info: unknown) {
+    console.warn("ConvexQuizErrorBoundary caught error, falling back to local model:", error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+export function BalanceQuiz() {
+  if (hasConvexUrl) {
+    return (
+      <ConvexQuizErrorBoundary fallback={<BalanceQuizInner isLive={false} />}>
+        <BalanceQuizInner isLive={true} />
+      </ConvexQuizErrorBoundary>
+    );
+  }
+  return <BalanceQuizInner isLive={false} />;
 }

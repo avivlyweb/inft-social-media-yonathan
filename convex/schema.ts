@@ -9,11 +9,20 @@ export default defineSchema({
     impact: v.string(),
     createdAt: v.number(),
   }),
+  quizResults: defineTable({
+    score: v.number(),
+    hours: v.number(),
+    inBed: v.boolean(),
+    notifications: v.boolean(),
+    morningScroll: v.boolean(),
+    createdAt: v.number(),
+  }),
   feedback: defineTable({
     author: v.string(),
     role: v.string(),
     comment: v.string(),
     rating: v.number(),
+    likes: v.optional(v.number()),
     createdAt: v.number(),
   }),
 });

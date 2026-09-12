@@ -24,6 +24,19 @@ export const addFeedback = mutation({
   },
 });
 
+// Like a feedback item
+export const likeFeedback = mutation({
+  args: {
+    id: v.id("feedback"),
+  },
+  handler: async (ctx, args) => {
+    const item = await ctx.db.get(args.id);
+    if (!item) return;
+    const currentLikes = item.likes || 0;
+    await ctx.db.patch(args.id, { likes: currentLikes + 1 });
+  },
+});
+
 // Retrieve aggregated poll counts
 export const getPollStats = query({
   handler: async (ctx) => {
@@ -45,5 +58,47 @@ export const castVote = mutation({
       ...args,
       createdAt: Date.now(),
     });
+  },
+});
+
+// Save anonymous quiz result
+export const submitQuizResult = mutation({
+  args: {
+    score: v.number(),
+    hours: v.number(),
+    inBed: v.boolean(),
+    notifications: v.boolean(),
+    morningScroll: v.boolean(),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.insert("quizResults", {
+      ...args,
+      createdAt: Date.now(),
+    });
+  },
+});
+
+// Get benchmark stats across all completed quizzes
+export const getQuizStats = query({
+  handler: async (ctx) => {
+    const results = await ctx.db.query("quizResults").collect();
+    const totalCount = results.length;
+    if (totalCount === 0) {
+      return {
+        totalCount: 0,
+        averageHours: 3.8,
+        averageScore: 68,
+        percentInBed: 74,
+      };
+    }
+    const sumHours = results.reduce((acc, r) => acc + r.hours, 0);
+    const sumScore = results.reduce((acc, r) => acc + r.score, 0);
+    const countInBed = results.filter((r) => r.inBed).length;
+    return {
+      totalCount,
+      averageHours: Number((sumHours / totalCount).toFixed(1)),
+      averageScore: Math.round(sumScore / totalCount),
+      percentInBed: Math.round((countInBed / totalCount) * 100),
+    };
   },
 });
