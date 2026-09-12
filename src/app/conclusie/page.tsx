@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { authorInfo } from "@/data/researchData";
 import { BalanceQuiz } from "@/components/BalanceQuiz";
 import {
@@ -103,6 +104,41 @@ export default function ConclusiePage() {
           </div>
         </div>
       </section>
+
+      {/* Japandi Visual Art Bridge */}
+      <div className="relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-stone-900 text-stone-100 dark:border-zinc-800 shadow-md">
+        <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div className="lg:col-span-7 p-6 sm:p-10 space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full bg-stone-800 border border-stone-700 px-3 py-1 text-xs font-semibold text-amber-200">
+              <Sparkles className="h-3.5 w-3.5" />
+              Mindful Digitaal Leven
+            </div>
+            <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+              Regie over jouw tijd: rust in een digitale wereld
+            </h3>
+            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+              Sociale media is ontworpen om vast te houden. Maar door bewuste pauzes in te bouwen en je slaapkamer heilig schermvrij te houden, transformeer je technologie van een afleiding naar een krachtig hulpmiddel.
+            </p>
+            <div className="pt-2 flex flex-wrap gap-4 text-xs text-stone-400">
+              <span className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-emerald-400" /> +365u focus per jaar
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-full bg-amber-400" /> Rustiger inslapen
+              </span>
+            </div>
+          </div>
+          <div className="lg:col-span-5 relative h-56 sm:h-72 w-full">
+            <Image
+              src="/illustrations/balance-hourglass.jpg"
+              alt="Japandi art of mindful balance and time"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
+          </div>
+        </div>
+      </div>
 
       {/* Interactive Quiz Component */}
       <BalanceQuiz />

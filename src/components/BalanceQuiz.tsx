@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   Sparkles,
   Smartphone,
@@ -474,6 +475,31 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                 <p>
                   Als je dit tempo van <strong className="text-zinc-900 dark:text-white">{hours} uur per dag</strong> aanhoudt, breng je in een volwassen leven van 60 jaar circa <strong className="text-indigo-600 dark:text-indigo-400">{yearsLostInLifetime} jaar onafgebroken</strong> achter een scherm door.
                 </p>
+
+                {/* Interactive Japandi Visual Vignette */}
+                <div className="my-3 overflow-hidden rounded-2xl border border-zinc-200/80 dark:border-zinc-700/80 bg-zinc-100/60 dark:bg-zinc-800/50">
+                  <div className="relative h-40 sm:h-44 w-full">
+                    <Image
+                      src={inBed ? "/illustrations/mindful-sleep.jpg" : "/illustrations/balance-hourglass.jpg"}
+                      alt={inBed ? "Mindful sleep and screen-free nightstand" : "Mindful digital hourglass balance"}
+                      fill
+                      className="object-cover object-center transition-all duration-700 hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 500px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent flex items-end p-3.5">
+                      <div className="text-white space-y-0.5">
+                        <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md">
+                          {inBed ? "Slaap & Melatonine Context" : "Tijdsbewustzijn & Focus"}
+                        </span>
+                        <p className="text-xs font-semibold drop-shadow-sm">
+                          {inBed
+                            ? "Telefoon buiten de slaapkamer = +45 min diepere REM-slaap"
+                            : "Regie over je zandloper = 365 uur extra vrije tijd per jaar"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 {inBed ? (
                   <p className="text-rose-600 dark:text-rose-400 font-medium">
