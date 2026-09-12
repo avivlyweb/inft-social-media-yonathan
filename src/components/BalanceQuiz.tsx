@@ -22,6 +22,14 @@ import {
   Share2,
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import {
+  CopiedIcon,
+  NotificationIcon,
+  ToggleIcon,
+  EyeToggleIcon,
+  HeartIcon,
+  SuccessIcon,
+} from "@/components/AnimatedStateIcons";
 
 export function BalanceQuiz() {
   const [hours, setHours] = useState<number>(4);
@@ -171,17 +179,8 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                   : "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
               }`}
             >
-              {copied ? (
-                <>
-                  <Check className="h-4 w-4 text-emerald-200" />
-                  <span>Gekopieerd naar klembord!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="h-4 w-4" />
-                  <span>Kopieer Balansrapport</span>
-                </>
-              )}
+              <CopiedIcon size={18} active={copied} color="currentColor" />
+              <span>{copied ? "Gekopieerd naar klembord!" : "Kopieer Balansrapport"}</span>
             </button>
           </div>
         </div>
@@ -278,10 +277,10 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`h-9 w-9 rounded-xl flex items-center justify-center ${
+                  <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${
                     inBed ? "bg-indigo-600 text-white" : "bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
                   }`}>
-                    <Moon className="h-4 w-4" />
+                    <EyeToggleIcon size={24} active={!inBed} color="currentColor" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-zinc-900 dark:text-white">
@@ -292,9 +291,7 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                     </p>
                   </div>
                 </div>
-                <div className={`h-6 w-11 rounded-full p-1 transition-colors ${inBed ? "bg-indigo-600" : "bg-zinc-300 dark:bg-zinc-700"}`}>
-                  <div className={`h-4 w-4 rounded-full bg-white transition-transform ${inBed ? "translate-x-5" : "translate-x-0"}`} />
-                </div>
+                <ToggleIcon size={34} active={inBed} color={inBed ? "#4F46E5" : "#A1A1AA"} />
               </button>
 
               {/* Toggle 2: Meldingen */}
@@ -311,10 +308,10 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`h-9 w-9 rounded-xl flex items-center justify-center ${
+                  <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${
                     notifications ? "bg-fuchsia-600 text-white" : "bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
                   }`}>
-                    <HeartHandshake className="h-4 w-4" />
+                    <NotificationIcon size={22} active={notifications} color="currentColor" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-zinc-900 dark:text-white">
@@ -325,9 +322,7 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                     </p>
                   </div>
                 </div>
-                <div className={`h-6 w-11 rounded-full p-1 transition-colors ${notifications ? "bg-fuchsia-600" : "bg-zinc-300 dark:bg-zinc-700"}`}>
-                  <div className={`h-4 w-4 rounded-full bg-white transition-transform ${notifications ? "translate-x-5" : "translate-x-0"}`} />
-                </div>
+                <ToggleIcon size={34} active={notifications} color={notifications ? "#C026D3" : "#A1A1AA"} />
               </button>
 
               {/* Toggle 3: Ochtend scroll */}
@@ -344,10 +339,10 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`h-9 w-9 rounded-xl flex items-center justify-center ${
+                  <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${
                     morningScroll ? "bg-cyan-600 text-white" : "bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400"
                   }`}>
-                    <Coffee className="h-4 w-4" />
+                    <HeartIcon size={22} active={!morningScroll} color="currentColor" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-zinc-900 dark:text-white">
@@ -358,9 +353,7 @@ Ontdek jouw eigen balans op: https://inft-yonathan.vercel.app`;
                     </p>
                   </div>
                 </div>
-                <div className={`h-6 w-11 rounded-full p-1 transition-colors ${morningScroll ? "bg-cyan-600" : "bg-zinc-300 dark:bg-zinc-700"}`}>
-                  <div className={`h-4 w-4 rounded-full bg-white transition-transform ${morningScroll ? "translate-x-5" : "translate-x-0"}`} />
-                </div>
+                <ToggleIcon size={34} active={morningScroll} color={morningScroll ? "#0891B2" : "#A1A1AA"} />
               </button>
             </div>
 

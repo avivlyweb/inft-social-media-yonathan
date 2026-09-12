@@ -16,6 +16,7 @@ import {
   Flame,
 } from "lucide-react";
 import { JapandiLogo } from "@/components/JapandiLogo";
+import { MenuCloseIcon } from "@/components/AnimatedStateIcons";
 
 const navItems = [
   {
@@ -139,7 +140,7 @@ export function Navbar() {
             className="flex md:hidden h-10 w-10 items-center justify-center rounded-xl border border-zinc-300 bg-white text-zinc-900 shadow-sm hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white transition-colors focus:outline-none"
             aria-label="Toggle navigatiemenu"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <MenuCloseIcon size={24} active={mobileMenuOpen} color="currentColor" />
           </button>
         </div>
       </header>
