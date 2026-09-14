@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { HeroMedia } from "@/components/HeroMedia";
 import {
   ArrowRight,
   BarChart3,
@@ -84,49 +84,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Editorial Japandi Hero Art Showcase (Option A) */}
-        <div className="mt-14 sm:mt-18 max-w-5xl mx-auto">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl sm:rounded-[32px] border border-[#E3DDD1] bg-[#F4EFE6] shadow-xl shadow-[#1F1D1A]/5 group">
-            <Image
-              src="/illustrations/hero-social-media.jpg"
-              alt="Japandi illustratie van jongeren en schermtijd op smartphones"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 1100px"
-              className="object-cover object-center group-hover:scale-102 transition-transform duration-700 ease-out"
-            />
-
-            {/* Japandi Organic Vignette Overlay */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1F1D1A]/65 via-[#1F1D1A]/15 to-transparent" />
-
-            {/* Floating Japandi Monograph Pill */}
-            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2 rounded-full border border-white/30 bg-[#FAF8F5]/85 backdrop-blur-md px-3.5 py-1.5 shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-[#5C6E58] animate-pulse" />
-              <span className="font-mono text-[11px] font-semibold text-[#1F1D1A] uppercase tracking-wider">
-                Dossier Beeld &bull; Schermtijd & Connectie
-              </span>
-            </div>
-
-            {/* Bottom Caption Overlay */}
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 text-white">
-              <div className="max-w-xl">
-                <p className="font-heading font-bold text-base sm:text-lg tracking-tight text-white drop-shadow-sm">
-                  De Digitale Aandachtseconomie in Beeld
-                </p>
-                <p className="text-xs sm:text-sm text-[#F4EFE6]/90 line-clamp-2 leading-relaxed">
-                  Hoe constante connectiviteit, micro-video&apos;s en notificaties het dagelijks leven van jongeren en jongvolwassenen vormgeven.
-                </p>
-              </div>
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/40 backdrop-blur-md border border-white/20 text-[11px] font-mono text-[#EAE4D7]">
-                <span>12–25 jaar &bull; 3–4.5u/dag</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="mt-3 text-center text-[11px] font-mono text-[#7A7366]">
-            Figuur 1.0 &bull; Visuele synthese van schermtijd, prikkelverwerking en sociale interactie
-          </p>
-        </div>
+        {/* Smart Editorial Hero Media Showcase */}
+        <HeroMedia />
 
         {/* Japandi Editorial Monograph Bento Grid */}
         <div className="mt-20 space-y-8">
