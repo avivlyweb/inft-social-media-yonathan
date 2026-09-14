@@ -53,7 +53,7 @@ const hasConvexUrl = Boolean(process.env.NEXT_PUBLIC_CONVEX_URL);
 // Function references defined for Convex query and mutation
 const getFeedbackRef = makeFunctionReference<"query">("social:getFeedback");
 const addFeedbackRef = makeFunctionReference<"mutation", { author: string; role: string; comment: string; rating: number }>("social:addFeedback");
-const likeFeedbackRef = makeFunctionReference<"mutation", { id: any }>("social:likeFeedback");
+const likeFeedbackRef = makeFunctionReference<"mutation", { id: string }>("social:likeFeedback");
 
 function formatCommentDate(timestamp?: number): string {
   if (!timestamp) return "Zojuist";
@@ -371,7 +371,7 @@ function ConvexConnectedFeedback() {
     );
     try {
       if (id && !id.startsWith("opt-") && !id.startsWith("local-")) {
-        await likeFeedbackMutation({ id: id as any });
+        await likeFeedbackMutation({ id });
       }
     } catch (err) {
       console.warn("Like mutation failed:", err);

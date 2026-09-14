@@ -3,29 +3,19 @@ import Link from "next/link";
 import {
   ArrowRight,
   BarChart3,
-  BookOpen,
-  CheckCircle2,
   Sparkles,
   Users,
-  ShieldAlert,
-  Zap,
   Flame,
   BrainCircuit,
-  Smartphone,
   Eye,
-  TrendingUp,
-  Heart,
   Lightbulb,
-  ExternalLink,
 } from "lucide-react";
-import { authorInfo, ageDistributionData } from "@/data/researchData";
+import { authorInfo } from "@/data/researchData";
 import { FeedbackSection } from "@/components/FeedbackSection";
 import {
   HeartIcon,
   PlayPauseIcon,
   LockUnlockIcon,
-  SuccessIcon,
-  NotificationIcon,
 } from "@/components/AnimatedStateIcons";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 

@@ -28,7 +28,7 @@ export function PrintReportButton({
     return (
       <button
         onClick={handlePrint}
-        className={`inline-flex items-center justify-center gap-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-2.5 text-xs font-bold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-700 shadow-xs transition-all cursor-pointer no-print ${className}`}
+        className={`inline-flex items-center justify-center gap-2 rounded-xl border border-[#E3DDD1] bg-white px-4 py-2.5 text-xs font-bold text-[#1F1D1A] hover:bg-[#FAF8F5] shadow-2xs transition-all cursor-pointer no-print ${className}`}
         title="Print of bewaar als PDF via het browser afdrukmenu"
       >
         <DownloadDoneIcon size={18} active={hasPrinted} color="currentColor" />
@@ -40,12 +40,12 @@ export function PrintReportButton({
   return (
     <button
       onClick={handlePrint}
-      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-zinc-950 dark:bg-white px-5 py-3 text-xs font-bold text-white dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-zinc-100 shadow-md hover:shadow-lg transition-all cursor-pointer no-print group ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-[#24211D] hover:bg-[#38332C] px-5 py-3 text-xs font-bold text-[#FAF8F5] shadow-xs hover:shadow-md transition-all cursor-pointer no-print group ${className}`}
       title="Print of bewaar als PDF via het browser afdrukmenu"
     >
       <DownloadDoneIcon size={20} active={hasPrinted} color="currentColor" />
       <span>{hasPrinted ? "Afdrukmenu geopend..." : "Exporteer / Print Onderzoeksrapport"}</span>
-      <span className="hidden sm:inline-block text-[10px] opacity-70 font-normal border-l border-zinc-700 dark:border-zinc-300 pl-2 ml-0.5">
+      <span className="hidden sm:inline-block text-[10px] opacity-70 font-normal border-l border-[#5A544A] pl-2 ml-0.5 font-mono">
         PDF / A4
       </span>
     </button>

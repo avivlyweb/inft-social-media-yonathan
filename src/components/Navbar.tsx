@@ -8,11 +8,8 @@ import {
   BookOpen,
   CheckCircle2,
   Home,
-  Sparkles,
-  Menu,
   X,
   ArrowRight,
-  Calculator,
   Flame,
 } from "lucide-react";
 import { JapandiLogo } from "@/components/JapandiLogo";

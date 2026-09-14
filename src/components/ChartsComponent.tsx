@@ -33,9 +33,8 @@ import {
   ChevronRight,
   CheckCircle2,
   HelpCircle,
-  Table as TableIcon,
 } from "lucide-react";
-import { PlayPauseIcon, ToggleIcon } from "@/components/AnimatedStateIcons";
+import { ToggleIcon } from "@/components/AnimatedStateIcons";
 
 export function ChartsComponent() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

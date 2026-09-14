@@ -8,13 +8,9 @@ import {
   Sparkles,
   Smartphone,
   Moon,
-  HeartHandshake,
   Clock,
   Zap,
-  Coffee,
   Brain,
-  Copy,
-  Check,
   Target,
   Sliders,
   BookOpen,
@@ -23,8 +19,6 @@ import {
   Award,
   Share2,
   Users,
-  Wifi,
-  Radio,
   CheckCircle2,
 } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -34,7 +28,6 @@ import {
   ToggleIcon,
   EyeToggleIcon,
   HeartIcon,
-  SuccessIcon,
 } from "@/components/AnimatedStateIcons";
 
 const hasConvexUrl = Boolean(process.env.NEXT_PUBLIC_CONVEX_URL);
@@ -46,11 +39,30 @@ const submitQuizResultRef = makeFunctionReference<
   { score: number; hours: number; inBed: boolean; notifications: boolean; morningScroll: boolean }
 >("social:submitQuizResult");
 
-interface BalanceQuizInnerProps {
-  isLive: boolean;
+interface LiveQuizStats {
+  totalCount?: number;
+  averageHours?: number;
+  averageScore?: number;
+  percentInBed?: number;
 }
 
-function BalanceQuizInner({ isLive }: BalanceQuizInnerProps) {
+interface BalanceQuizPresenterProps {
+  isLive: boolean;
+  liveQuizStats?: LiveQuizStats | null;
+  submitQuizResultMutation?: ((args: {
+    hours: number;
+    inBed: boolean;
+    notifications: boolean;
+    morningScroll: boolean;
+    score: number;
+  }) => Promise<unknown>) | null;
+}
+
+function BalanceQuizPresenter({
+  isLive,
+  liveQuizStats,
+  submitQuizResultMutation,
+}: BalanceQuizPresenterProps) {
   const [hours, setHours] = useState<number>(4);
   const [inBed, setInBed] = useState<boolean>(true);
   const [notifications, setNotifications] = useState<boolean>(true);
@@ -59,10 +71,6 @@ function BalanceQuizInner({ isLive }: BalanceQuizInnerProps) {
   const [copied, setCopied] = useState<boolean>(false);
   const [hasSavedResult, setHasSavedResult] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
-
-  // Live Convex benchmark stats (only executed when isLive is true)
-  const liveQuizStats = isLive ? useQuery(getQuizStatsRef) : undefined;
-  const submitQuizResultMutation = isLive ? useMutation(submitQuizResultRef) : null;
 
   // Dynamic calculations for storytelling
   // Average lifespan ~ 80 years. Hours spent per year:
@@ -693,13 +701,35 @@ class ConvexQuizErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundar
   }
 }
 
+function BalanceQuizLive() {
+  const liveQuizStats = useQuery(getQuizStatsRef);
+  const submitQuizResultMutation = useMutation(submitQuizResultRef);
+  return (
+    <BalanceQuizPresenter
+      isLive={true}
+      liveQuizStats={liveQuizStats as LiveQuizStats | undefined}
+      submitQuizResultMutation={submitQuizResultMutation}
+    />
+  );
+}
+
+function BalanceQuizStatic() {
+  return (
+    <BalanceQuizPresenter
+      isLive={false}
+      liveQuizStats={undefined}
+      submitQuizResultMutation={null}
+    />
+  );
+}
+
 export function BalanceQuiz() {
   if (hasConvexUrl) {
     return (
-      <ConvexQuizErrorBoundary fallback={<BalanceQuizInner isLive={false} />}>
-        <BalanceQuizInner isLive={true} />
+      <ConvexQuizErrorBoundary fallback={<BalanceQuizStatic />}>
+        <BalanceQuizLive />
       </ConvexQuizErrorBoundary>
     );
   }
-  return <BalanceQuizInner isLive={false} />;
+  return <BalanceQuizStatic />;
 }
