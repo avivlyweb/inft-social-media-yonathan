@@ -37,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="nl" className={`${syne.variable} ${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 selection:bg-indigo-500 selection:text-white dark:bg-zinc-950 dark:text-zinc-50">
+      <body className="min-h-full flex flex-col bg-[#FAF8F5] text-[#1F1D1A] selection:bg-[#C26747] selection:text-white antialiased">
         <ConvexClientProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
